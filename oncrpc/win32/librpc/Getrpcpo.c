@@ -65,8 +65,7 @@ static  char sccsid[] = "@(#)getrpcport.c 1.3 87/08/11 SMI";
 
 #include "all_oncrpc.h"
 
-getrpcport(host, prognum, versnum, proto)
-	char *host;
+int getrpcport(char *host, int prognum, int versnum, int proto)
 {
 	struct sockaddr_in addr;
 	struct hostent *hp;

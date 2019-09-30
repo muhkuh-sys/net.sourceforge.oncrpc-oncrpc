@@ -146,9 +146,7 @@ getrpcent()
 	return interpret(d->line, strlen(d->line));
 }
 
-static struct rpcent *
-interpret(val, len)
-	char *val;
+static struct rpcent *interpret(char *val, int len)
 {
 	register struct rpcdata *d = _rpcdata();
 	char *p;

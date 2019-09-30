@@ -104,7 +104,7 @@ struct svcudp_data {
 };
 #define	su_data(xprt)	((struct svcudp_data *)(xprt->xp_p2))
 
-static cache_get(SVCXPRT *xprt, struct rpc_msg *msg, char **replyp, u_long *replylenp);
+static int cache_get(SVCXPRT *xprt, struct rpc_msg *msg, char **replyp, u_long *replylenp);
 static void cache_set(SVCXPRT *xprt, u_long replylen);
 
 
@@ -400,7 +400,7 @@ struct udp_cache {
  * Enable use of the cache.
  * Note: there is no disable.
  */
-svcudp_enablecache(transp, size)
+int svcudp_enablecache(transp, size)
 	SVCXPRT *transp;
 	u_long size;
 {
@@ -502,7 +502,7 @@ cache_set(xprt, replylen)
  * Try to get an entry from the cache
  * return 1 if found, 0 if not found
  */
-static
+static int
 cache_get(xprt, msg, replyp, replylenp)
 	SVCXPRT *xprt;
 	struct rpc_msg *msg;
