@@ -33,5 +33,6 @@ mkdir -p ${BUILD_DIR}
 # Build openocd.
 pushd ${BUILD_DIR}
 cmake -DCMAKE_INSTALL_PREFIX="" ${CMAKE_CROSS_COMPILER} ${CMAKE_PLATFORM} ${CMAKE_MODULES} ${PRJ_DIR}
+make
 make pack
 popd
