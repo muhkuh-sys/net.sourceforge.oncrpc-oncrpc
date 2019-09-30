@@ -1,0 +1,37 @@
+#! /bin/bash
+set -e
+
+TARGET=$1
+
+# Get the path to this script. Found here: https://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+	DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+	SOURCE="$(readlink "$SOURCE")"
+	[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+PRJ_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+
+if [ "$TARGET" == "windows32" ]; then
+	CMAKE_CROSS_COMPILER="-DCMAKE_TOOLCHAIN_FILE=${PRJ_DIR}/cmake/toolchainfiles/toolchain_windows_32.cmake"
+	CMAKE_PLATFORM="-DJONCHKI_PLATFORM_DIST_ID=windows -DJONCHKI_PLATFORM_DIST_VERSION="" -DJONCHKI_PLATFORM_CPU_ARCH=x86"
+
+elif [ "$TARGET" == "windows64" ]; then
+	CMAKE_CROSS_COMPILER="-DCMAKE_TOOLCHAIN_FILE=${PRJ_DIR}/cmake/toolchainfiles/toolchain_windows_64.cmake"
+	CMAKE_PLATFORM="-DJONCHKI_PLATFORM_DIST_ID=windows -DJONCHKI_PLATFORM_DIST_VERSION="" -DJONCHKI_PLATFORM_CPU_ARCH=x86_64"
+
+else
+	echo "Unknown build target: ${TARGET}"
+	exit -1
+fi
+
+BUILD_DIR=${PRJ_DIR}/build/${TARGET}
+mkdir -p ${BUILD_DIR}
+
+
+# Build openocd.
+pushd ${BUILD_DIR}
+cmake -DCMAKE_INSTALL_PREFIX="" ${CMAKE_CROSS_COMPILER} ${CMAKE_PLATFORM} ${CMAKE_MODULES} ${PRJ_DIR}
+make pack
+popd
