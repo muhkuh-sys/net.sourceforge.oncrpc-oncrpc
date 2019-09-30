@@ -123,6 +123,10 @@ xdr_float(xdrs, fp)
 /*also DEC ALPHA is same endian for NT as Intel so...*/
 #define _X86_
 #endif
+
+#if defined(__MINGW32__) || defined(__MINGW64__)
+#define _X86_
+#endif
 #endif
 
 #if !defined(mc68000) && !defined(sparc) && !defined(mips) && !defined(mmax) && !defined(_X86_)
