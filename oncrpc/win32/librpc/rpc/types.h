@@ -60,6 +60,10 @@
 /*
  * Rpc additions to <sys/types.h>
  */
+
+#include <stdint.h>
+
+
 #ifndef __TYPES_RPC_HEADER__
 #define __TYPES_RPC_HEADER__
 
