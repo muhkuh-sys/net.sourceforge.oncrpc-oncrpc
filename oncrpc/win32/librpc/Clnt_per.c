@@ -270,7 +270,6 @@ char *
 clnt_spcreateerror(s)
 	char *s;
 {
-	extern int sys_nerr;
 #ifndef WIN32
 	extern char *sys_errlist[];
 #endif
