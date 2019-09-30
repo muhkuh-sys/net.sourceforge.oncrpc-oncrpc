@@ -19,12 +19,14 @@
 #define __all_oncrpc_includes__
 
 #ifdef WIN32
-#ifndef DllExport
-#define DllExport	__declspec( dllexport )
-#endif
-#ifndef DllImport
-#define DllImport   __declspec( dllimport )
-#endif
+//#ifndef DllExport
+//#define DllExport	__declspec( dllexport )
+//#endif
+//#ifndef DllImport
+//#define DllImport   __declspec( dllimport )
+//#endif
+#define DllExport
+#define DllImport
 
 #if defined _W95 || defined _NT || defined(__MINGW32__) || defined(__MINGW64__)
 #include <stdio.h>

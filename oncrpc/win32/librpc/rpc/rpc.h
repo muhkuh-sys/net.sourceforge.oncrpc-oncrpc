@@ -67,8 +67,10 @@
 
 #ifdef WIN32
 //#define FD_SETSIZE	128
-#define DllExport	__declspec( dllexport )
-#define DllImport	__declspec( dllimport )
+//#define DllExport	__declspec( dllexport )
+//#define DllImport	__declspec( dllimport )
+#define DllExport
+#define DllImport
 
 #include <stdlib.h>
 #include <windows.h>
