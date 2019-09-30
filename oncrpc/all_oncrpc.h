@@ -40,10 +40,10 @@
 #include <rpc/rpc.h>
 #include <rpc/xdr.h>
 #include <rpc/auth.h>
-#include <rpc/auth_uni.h>
+#include <rpc/auth_unix.h>
 #include <rpc/clnt.h>
-#include <rpc/pmap_cln.h>
-#include <rpc/pmap_pro.h>
+#include <rpc/pmap_clnt.h>
+#include <rpc/pmap_prot.h>
 #include <rpc/pmap_rmt.h>
 #include <rpc/xdr.h>
 #include <sys/types.h>

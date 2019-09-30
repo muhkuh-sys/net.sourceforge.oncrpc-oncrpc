@@ -8,45 +8,45 @@ PROJECT("liboncrpc"
 # Build the library.
 #
 set(oncrpc_SOURCES
-	auth_non.c
-	auth_uni.c
-	authunix.c
+	auth_none.c
+	auth_unix.c
+	authunix_prot.c
 	bcopy.c
 	bindresv.c
-	clnt_gen.c
-	clnt_per.c
+	clnt_generic.c
+	clnt_perror.c
 	clnt_raw.c
-	clnt_sim.c
+	clnt_simple.c
 	clnt_tcp.c
 	clnt_udp.c
-	get_myad.c
-	getrpcen.c
-	getrpcpo.c
+	get_myaddress.c
+	getrpcent.c
+	getrpcport.c
 	nt.c
-	pmap_cln.c
-	pmap_get.c
-	pmap_gma.c
-	pmap_pr.c
-	pmap_pro.c
+	pmap_clnt.c
+	pmap_getport.c
+	pmap_getmaps.c
+	pmap_prot.c
+	pmap_prot2.c
 	pmap_rmt.c
-	rpc_call.c
-	rpc_comm.c
+	rpc_callmsg.c
+	rpc_commondata.c
 	rpc_prot.c
-	svc_auth.c
-	svc_autu.c
+	svc_auth_nodes.c
+	svc_auth_unix.c
 	svc.c
 	svc_raw.c
 	svc_run.c
-	svc_simp.c
+	svc_simple.c
 	svc_tcp.c
 	svc_udp.c
-	xdr_arra.c
+	xdr_array.c
 	xdr.c
-	xdr_floa.c
+	xdr_float.c
 	xdr_mem.c
 	xdr_rec.c
-	xdr_refe.c
-	xdr_stdi.c
+	xdr_reference.c
+	xdr_stdio.c
 )
 
 
@@ -69,7 +69,7 @@ ENDIF("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU"  AND  "${CMAKE_SYSTEM_NAME}" STR
 # This is the library itself and the public headers.
 #
 #SET(CMAKE_INSTALL_PREFIX /install)
-#INSTALL(TARGETS TARGET_mhash
+#INSTALL(TARGETS TARGET_oncrpc
 #        EXPORT EXPORT_package
 #        LIBRARY DESTINATION lib
 #        ARCHIVE DESTINATION lib
@@ -79,3 +79,20 @@ ENDIF("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU"  AND  "${CMAKE_SYSTEM_NAME}" STR
 #        DESTINATION include)
 #INSTALL(FILES include/mutils/mglobal.h include/mutils/mhash.h include/mutils/mhash_config.h include/mutils/mincludes.h include/mutils/mtypes.h include/mutils/mutils.h
 #        DESTINATION include/mutils)
+
+
+#	rpc/auth.h
+#	rpc/auth_unix.h
+#bcopy.h
+#	rpc/clnt.h
+#	rpc/netdb.h
+#pmap_cln.h
+#pmap_pro.h
+#pmap_rmt.h
+#	rpc/rpc.h
+#	rpc/rpc_msg.h
+#	rpc/svc_auth.h
+#	rpc/svc.h
+#	rpc/types.h
+#	rpc/xdr.h
+
