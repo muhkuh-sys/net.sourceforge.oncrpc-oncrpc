@@ -75,7 +75,7 @@ nt_rpc_report(LPTSTR lpszMsg)
             NULL,                 // current user's SID
             2,                    // strings in lpszStrings
             0,                    // no bytes of raw data
-            lpszStrings,          // array of error strings
+            (const char**)lpszStrings,          // array of error strings
             NULL);                // no raw data
 
         (VOID) DeregisterEventSource(hEventSource);
