@@ -77,7 +77,7 @@
 #include <winsock.h>
 #include <rpc/types.h>		/* some typedefs */
 #include <process.h>
-#include <rpc/bcopy.h>
+#include <time.h>
 
 #define WSAerrno (WSAGetLastError())
 #define gettimeofday(tv,tz) ((tv)->tv_sec = time(0), (tv)->tv_usec = 0)
