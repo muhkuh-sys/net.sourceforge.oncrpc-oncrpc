@@ -8,44 +8,44 @@ PROJECT("liboncrpc"
 # Build the library.
 #
 set(oncrpc_SOURCES
-	Auth_non.c
-	Auth_uni.c
+	auth_non.c
+	auth_uni.c
 	authunix.c
 	bcopy.c
-	Bindresv.c
+	bindresv.c
 	clnt_gen.c
-	Clnt_per.c
+	clnt_per.c
 	clnt_raw.c
 	clnt_sim.c
-	Clnt_tcp.c
-	Clnt_udp.c
-	Get_myad.c
-	Getrpcen.c
-	Getrpcpo.c
+	clnt_tcp.c
+	clnt_udp.c
+	get_myad.c
+	getrpcen.c
+	getrpcpo.c
 	nt.c
-	Pmap_cln.c
+	pmap_cln.c
 	pmap_get.c
 	pmap_gma.c
 	pmap_pr.c
 	pmap_pro.c
-	Pmap_rmt.c
+	pmap_rmt.c
 	rpc_call.c
 	rpc_comm.c
 	rpc_prot.c
 	svc_auth.c
-	Svc_autu.c
-	Svc.c
+	svc_autu.c
+	svc.c
 	svc_raw.c
-	Svc_run.c
-	Svc_simp.c
-	Svc_tcp.c
-	Svc_udp.c
-	Xdr_arra.c
-	Xdr.c
+	svc_run.c
+	svc_simp.c
+	svc_tcp.c
+	svc_udp.c
+	xdr_arra.c
+	xdr.c
 	xdr_floa.c
 	xdr_mem.c
-	Xdr_rec.c
-	Xdr_refe.c
+	xdr_rec.c
+	xdr_refe.c
 	xdr_stdi.c
 )
 
