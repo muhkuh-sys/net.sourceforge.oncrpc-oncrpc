@@ -79,7 +79,37 @@ struct rpcdata {
 	struct	rpcent rpc;
 	char	line[BUFSIZ+1];
 	char	*domain;
-} *rpcdata, *_rpcdata();
+} *rpcdata;
+
+
+#ifdef WIN32
+static char RPCDB[1024];
+#else
+static char RPCDB[] = "/etc/rpc";
+#endif
+
+static struct rpcdata *
+_rpcdata()
+{
+	register struct rpcdata *d = rpcdata;
+
+#ifdef WIN32
+	char *str;
+
+	if ((RPCDB[0] == '\0') && (str = getenv("SystemRoot"))) {
+		strcpy(RPCDB, str);
+		strcat(RPCDB, "\\system32\\drivers\\etc\\rpc");
+	}
+#endif
+	
+	if (d == 0) {
+		d = (struct rpcdata *)calloc(1, sizeof (struct rpcdata));
+		rpcdata = d;
+	}
+	return (d);
+}
+
+
 
 static	struct rpcent *interpret();
 struct	hostent *gethostent();
@@ -88,12 +118,6 @@ struct	hostent *gethostent();
 #else
 char	*inet_ntoa();
 static	char *index();
-#endif
-
-#ifdef WIN32
-static char RPCDB[1024];
-#else
-static char RPCDB[] = "/etc/rpc";
 #endif
 
 void
@@ -209,27 +233,6 @@ static struct rpcent *interpret(char *val, int len)
 	}
 	*q = NULL;
 	return (&d->rpc);
-}
-
-static struct rpcdata *
-_rpcdata()
-{
-	register struct rpcdata *d = rpcdata;
-
-#ifdef WIN32
-	char *str;
-
-	if ((RPCDB[0] == '\0') && (str = getenv("SystemRoot"))) {
-		strcpy(RPCDB, str);
-		strcat(RPCDB, "\\system32\\drivers\\etc\\rpc");
-	}
-#endif
-	
-	if (d == 0) {
-		d = (struct rpcdata *)calloc(1, sizeof (struct rpcdata));
-		rpcdata = d;
-	}
-	return (d);
 }
 
 struct rpcent *
